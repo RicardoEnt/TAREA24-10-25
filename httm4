@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+
+<html lang="es">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <title>Calculadora de Promedio</title>
+
+  <style>
+
+    body {
+
+      font-family: Arial, sans-serif;
+
+      text-align: center;
+
+      margin-top: 50px;
+
+    }
+
+    button {
+
+      padding: 8px 15px;
+
+      background-color: #4CAF50;
+
+      color: white;
+
+      border: none;
+
+      border-radius: 5px;
+
+      cursor: pointer;
+
+    }
+
+    button:hover {
+
+      background-color: #45a049;
+
+    }
+
+    #resultado {
+
+      margin-top: 20px;
+
+      font-size: 18px;
+
+      font-weight: bold;
+
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+
+
+  <h2>Calculadora de Promedio</h2>
+
+
+
+  <button onclick="mostrarPromedio()">Calcular Promedio</button>
+
+
+
+  <div id="resultado"></div>
+
+
+
+  <script>
+
+    // Array de calificaciones (puedes cambiar los valores)
+
+    const calificaciones = [85, 70, 95, 60, 100];
+
+
+
+    // Función que calcula el promedio
+
+    function calcularPromedio(array) {
+
+      const suma = array.reduce((acumulado, valor) => acumulado + valor, 0);
+
+      return suma / array.length;
+
+    }
+
+
+
+    // Muestra el resultado y si aprobó o reprobó
+
+    function mostrarPromedio() {
+
+      const promedio = calcularPromedio(calificaciones);
+
+      const mensaje = promedio >= 70 ? "✅ Aprobado" : "❌ Reprobado";
+
+      document.getElementById("resultado").innerHTML = 
+
+        `Promedio: ${promedio.toFixed(2)}<br>${mensaje}`;
+
+    }
+
+  </script>
+
+
+
+</body>
+
+</html>
