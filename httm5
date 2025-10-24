@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+
+<html lang="es">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <title>Juego de Adivinanza</title>
+
+  <style>
+
+    body {
+
+      font-family: Arial, sans-serif;
+
+      text-align: center;
+
+      margin-top: 60px;
+
+    }
+
+    input {
+
+      padding: 8px;
+
+      width: 100px;
+
+      text-align: center;
+
+    }
+
+    button {
+
+      padding: 8px 15px;
+
+      margin-left: 5px;
+
+      background-color: #4CAF50;
+
+      color: white;
+
+      border: none;
+
+      border-radius: 5px;
+
+      cursor: pointer;
+
+    }
+
+    button:hover {
+
+      background-color: #45a049;
+
+    }
+
+    #mensaje {
+
+      margin-top: 20px;
+
+      font-size: 18px;
+
+      font-weight: bold;
+
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+
+
+  <h2>🎯 Juego de Adivinanza</h2>
+
+  <p>Adivina el número secreto entre 1 y 100</p>
+
+
+
+  <input type="number" id="numeroUsuario" placeholder="Tu número">
+
+  <button onclick="verificarAdivinanza()">Probar</button>
+
+
+
+  <p id="mensaje"></p>
+
+
+
+  <script>
+
+    // Genera un número aleatorio entre 1 y 100
+
+    const numeroSecreto = Math.floor(Math.random() * 100) + 1;
+
+    let intentos = 0;
+
+
+
+    // Función que compara el número del usuario con el número secreto
+
+    function verificar(numeroUsuario, numeroSecreto) {
+
+      if (numeroUsuario > numeroSecreto) return "El número secreto es menor 🔽";
+
+      if (numeroUsuario < numeroSecreto) return "El número secreto es mayor 🔼";
+
+      return "🎉 ¡Acertaste el número!";
+
+    }
+
+
+
+    // Función que se ejecuta al presionar el botón
+
+    function verificarAdivinanza() {
+
+      const input = document.getElementById("numeroUsuario");
+
+      const numeroUsuario = parseInt(input.value);
+
+      const mensajeElemento = document.getElementById("mensaje");
+
+
+
+      // Validar entrada
+
+      if (isNaN(numeroUsuario) || numeroUsuario < 1 || numeroUsuario > 100) {
+
+        mensajeElemento.textContent = "Por favor ingresa un número entre 1 y 100.";
+
+        return;
+
+      }
+
+
+
+      intentos++;
+
+      const resultado = verificar(numeroUsuario, numeroSecreto);
+
+      mensajeElemento.textContent = `${resultado} (Intentos: ${intentos})`;
+
+
+
+      // Si acertó, desactiva el input y el botón
+
+      if (resultado.includes("Acertaste")) {
+
+        input.disabled = true;
+
+        document.querySelector("button").disabled = true;
+
+      }
+
+    }
+
+  </script>
+
+
+
+</body>
+
+</html>
