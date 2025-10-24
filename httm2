@@ -1,0 +1,114 @@
+!DOCTYPE html>
+
+<html lang="es">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <title>Contador de Palabras</title>
+
+  <style>
+
+    body {
+
+      font-family: Arial, sans-serif;
+
+      text-align: center;
+
+      margin-top: 50px;
+
+    }
+
+    textarea {
+
+      width: 300px;
+
+      height: 100px;
+
+      padding: 10px;
+
+      font-size: 14px;
+
+      border-radius: 5px;
+
+      border: 1px solid #ccc;
+
+    }
+
+    button {
+
+      margin-top: 10px;
+
+      padding: 8px 15px;
+
+      background-color: #4CAF50;
+
+      color: white;
+
+      border: none;
+
+      border-radius: 5px;
+
+      cursor: pointer;
+
+    }
+
+    button:hover {
+
+      background-color: #45a049;
+
+    }
+
+    p {
+
+      margin-top: 15px;
+
+      font-weight: bold;
+
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+
+
+  <h2>Contador de Palabras</h2>
+
+
+
+  <textarea id="frase" placeholder="Escribe una frase..."></textarea><br>
+
+  <button onclick="mostrarConteo()">Contar Palabras</button>
+
+
+
+  <p id="resultado"></p>
+
+
+
+  <script>
+
+    function contarPalabras(frase) {
+
+      // Quita espacios extras y divide por espacios
+
+      const palabras = frase.trim().split(/\s+/);
+
+      return frase.trim() === "" ? 0 : palabras.length;
+
+    }
+
+
+
+    function mostrarConteo() {
+
+      const texto = document.getElementById("frase").value;
+
+      const total = contarPalabras(texto);
+
+      document.getElementById("resultado").textContent = "Número de palabras: " + total;
+
