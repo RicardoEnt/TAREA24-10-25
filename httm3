@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+
+<html lang="es">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <title>Números Pares en un Array</title>
+
+  <style>
+
+    body {
+
+      font-family: Arial, sans-serif;
+
+      text-align: center;
+
+      margin-top: 50px;
+
+    }
+
+    button {
+
+      margin: 10px;
+
+      padding: 8px 15px;
+
+      border: none;
+
+      background-color: #4CAF50;
+
+      color: white;
+
+      border-radius: 5px;
+
+      cursor: pointer;
+
+    }
+
+    button:hover {
+
+      background-color: #45a049;
+
+    }
+
+    ul {
+
+      list-style: none;
+
+      padding: 0;
+
+      font-size: 18px;
+
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+
+
+  <h2>Números Pares en un Array</h2>
+
+
+
+  <button onclick="mostrarPares()">Generar y mostrar pares</button>
+
+
+
+  <ul id="listaPares"></ul>
+
+
+
+  <script>
+
+    // Función que filtra los números pares
+
+    function filtrarPares(array) {
+
+      return array.filter(num => num % 2 === 0);
+
+    }
+
+
+
+    function mostrarPares() {
+
+      // Genera un array de 10 números aleatorios entre 1 y 100
+
+      const numeros = Array.from({ length: 10 }, () => Math.floor(Math.random() * 100) + 1);
+
+
+
+      // Filtra solo los pares
+
+      const pares = filtrarPares(numeros);
+
+
+
+      // Muestra los pares en la lista <ul>
+
+      const lista = document.getElementById("listaPares");
+
+      lista.innerHTML = ""; // Limpia la lista anterior
+
+
+
+      if (pares.length === 0) {
+
+        const li = document.createElement("li");
+
+        li.textContent = "No hay números pares 😅";
+
+        lista.appendChild(li);
+
+      } else {
+
+        pares.forEach(num => {
+
+          const li = document.createElement("li");
+
+          li.textContent = num;
+
+          lista.appendChild(li);
+
+        });
+
+      }
+
+    }
+
+  </script>
+
+
+
+</body>
+
+</html>
